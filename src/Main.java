@@ -12,7 +12,7 @@ class Main {
         // Sample Course
         Course c1 = new Course(101, "OOP", 2, i1);
 
-        // Add course to system
+        // Add course
         manager.addCourse(c1);
 
         while (true) {
@@ -23,12 +23,33 @@ class Main {
             System.out.println("5. Exit");
             System.out.print("Enter choice: ");
 
-            int choice = sc.nextInt();
+            int choice;
+
+            // 🔥 Input validation for choice
+            try {
+                choice = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid input! Enter a number.");
+                sc.nextLine();
+                continue;
+            }
 
             if (choice == 1) {
+
+                int id;
+
                 System.out.print("Enter ID: ");
-                int id = sc.nextInt();
-                sc.nextLine();
+
+                // 🔥 Input validation for ID
+                try {
+                    id = sc.nextInt();
+                } catch (Exception e) {
+                    System.out.println("Invalid ID! Please enter numbers only.");
+                    sc.nextLine();
+                    continue;
+                }
+
+                sc.nextLine(); // clear buffer
 
                 System.out.print("Enter Name: ");
                 String name = sc.nextLine();
@@ -36,9 +57,10 @@ class Main {
                 Student s = new Student(id, name);
                 manager.addStudent(s);
 
-                System.out.println("Student added");
+                System.out.println("Student added successfully");
 
             } else if (choice == 2) {
+
                 if (manager.students.size() == 0) {
                     System.out.println("No students available");
                     continue;
@@ -48,16 +70,20 @@ class Main {
                 manager.enrollStudent(s, c1);
 
             } else if (choice == 3) {
+
                 manager.displayAllStudents();
 
             } else if (choice == 4) {
+
                 manager.displayAllCourses();
 
             } else if (choice == 5) {
+
                 System.out.println("Exiting...");
                 break;
 
             } else {
+
                 System.out.println("Invalid choice");
             }
         }
