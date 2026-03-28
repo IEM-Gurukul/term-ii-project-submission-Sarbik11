@@ -6,13 +6,13 @@ class Main {
         RegistrationManager manager = new RegistrationManager();
         Scanner sc = new Scanner(System.in);
 
-        // Sample Instructor
+      
         Instructor i1 = new Instructor(1, "Dr. Smith", "Java");
 
-        // Sample Course
+        
         Course c1 = new Course(101, "OOP", 2, i1);
 
-        // Add course
+      
         manager.addCourse(c1);
 
         while (true) {
@@ -25,7 +25,7 @@ class Main {
 
             int choice;
 
-            // 🔥 Input validation for choice
+          
             try {
                 choice = sc.nextInt();
             } catch (Exception e) {
